@@ -1,0 +1,385 @@
+{
+  "timestamp": "2026-02-25T23:51:06.691Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-25T23:51:03.017Z",
+    "activeFeatures": [
+      "mdir-tui",
+      "mdir",
+      "operations",
+      "panels",
+      "tests",
+      "bkit_mdirproject"
+    ],
+    "primaryFeature": "mdir-tui",
+    "features": {
+      "mdir-tui": {
+        "phase": "act",
+        "status": "in_progress",
+        "startedAt": "2026-02-25T08:00:00.000Z",
+        "matchRate": null,
+        "iterationCount": 0,
+        "documents": {
+          "plan": "docs/01-plan/features/mdir-tui.plan.md",
+          "design": "docs/02-design/features/mdir-tui.design.md",
+          "analysis": null,
+          "report": null
+        },
+        "phaseNumber": 5,
+        "previousPhase": "check",
+        "autoAdvanced": true,
+        "timestamps": {
+          "lastUpdated": "2026-02-25T08:14:37.151Z"
+        }
+      },
+      "mdir": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-25T08:04:57.550Z",
+          "lastUpdated": "2026-02-25T23:51:03.017Z"
+        },
+        "lastFile": "E:\\dback\\00_sumitomo_sangwoo\\pythonprogram\\20260223_flyingprobe\\bkit_mdirproject\\src\\mdir\\app.py"
+      },
+      "operations": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-25T08:05:00.995Z",
+          "lastUpdated": "2026-02-25T08:17:53.919Z"
+        },
+        "lastFile": "E:\\dback\\00_sumitomo_sangwoo\\pythonprogram\\20260223_flyingprobe\\bkit_mdirproject\\src\\mdir\\operations\\copy.py"
+      },
+      "panels": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-25T08:05:01.699Z",
+          "lastUpdated": "2026-02-25T23:50:58.519Z"
+        },
+        "lastFile": "E:\\dback\\00_sumitomo_sangwoo\\pythonprogram\\20260223_flyingprobe\\bkit_mdirproject\\src\\mdir\\panels\\file_panel.py"
+      },
+      "tests": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-25T08:08:09.999Z",
+          "lastUpdated": "2026-02-25T08:20:11.806Z"
+        },
+        "lastFile": "E:\\dback\\00_sumitomo_sangwoo\\pythonprogram\\20260223_flyingprobe\\bkit_mdirproject\\tests\\test_operations.py"
+      },
+      "bkit_mdirproject": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-25T23:40:26.243Z",
+          "lastUpdated": "2026-02-25T23:40:26.243Z"
+        },
+        "lastFile": "E:\\dback\\00_sumitomo_sangwoo\\pythonprogram\\20260223_flyingprobe\\bkit_mdirproject\\run.py"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Dynamic",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-25T07:48:05.158Z",
+      "onboardingCompleted": true,
+      "lastActivity": "2026-02-25T23:51:03.017Z"
+    },
+    "history": [
+      {
+        "feature": "mdir-tui",
+        "phase": "plan",
+        "action": "created",
+        "timestamp": "2026-02-25T08:00:00.000Z"
+      },
+      {
+        "timestamp": "2026-02-25T08:04:57.550Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:05:00.358Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:05:00.995Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:05:01.699Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:05:26.798Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:05:53.848Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:06:04.071Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:06:09.407Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:06:19.444Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:07:01.290Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:07:20.171Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:07:31.098Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:08:06.458Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:08:09.999Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:08:22.737Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:08:37.711Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:09:38.778Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:14:37.152Z",
+        "feature": "mdir-tui",
+        "phase": "act",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:17:43.356Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:17:47.932Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:17:53.919Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:18:01.636Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:18:11.761Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:18:23.679Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:05.419Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:10.936Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:17.718Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:24.742Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:32.821Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:39.533Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:48.241Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:52.341Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:19:59.605Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:20:06.011Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:20:11.806Z",
+        "feature": "tests",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:34:04.716Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T08:34:17.603Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T23:40:26.243Z",
+        "feature": "bkit_mdirproject",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T23:43:53.570Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T23:43:58.476Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T23:46:08.451Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T23:50:53.678Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T23:50:58.519Z",
+        "feature": "panels",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-25T23:51:03.017Z",
+        "feature": "mdir",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}

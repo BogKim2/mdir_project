@@ -138,3 +138,84 @@ class TestMakeDirectory:
         (tmp_path / "existing").mkdir()
         with pytest.raises(FileOperationError):
             make_directory(tmp_path, "existing")
+
+
+# ── 보안 테스트 (VULN-01, VULN-07) ──────────────────────────────────
+
+class TestSecurityPathTraversal:
+    """경로 순회 공격 차단 테스트 (VULN-01 Critical)."""
+
+    def test_mkdir_dotdot_blocked(self, tmp_path: Path) -> None:
+        """'..' 포함 폴더명으로 경로 순회 시도 차단."""
+        with pytest.raises(FileOperationError):
+            make_directory(tmp_path, "../escaped")
+
+    def test_mkdir_backslash_path_blocked(self, tmp_path: Path) -> None:
+        """백슬래시 경로 구분자 차단."""
+        with pytest.raises(FileOperationError):
+            make_directory(tmp_path, "sub\\escape")
+
+    def test_mkdir_slash_path_blocked(self, tmp_path: Path) -> None:
+        """슬래시 경로 구분자 차단."""
+        with pytest.raises(FileOperationError):
+            make_directory(tmp_path, "sub/escape")
+
+    def test_rename_dotdot_blocked(self, tmp_path: Path) -> None:
+        """이름 변경 시 '..' 경로 순회 차단."""
+        f = tmp_path / "file.txt"
+        f.write_text("")
+        item = FileItem.from_path(f)
+        with pytest.raises(FileOperationError):
+            rename_item(item, "../outside.txt")
+
+    def test_rename_slash_blocked(self, tmp_path: Path) -> None:
+        """이름 변경 시 슬래시 경로 구분자 차단."""
+        f = tmp_path / "file.txt"
+        f.write_text("")
+        item = FileItem.from_path(f)
+        with pytest.raises(FileOperationError):
+            rename_item(item, "sub/file.txt")
+
+
+class TestSecurityFilenameValidation:
+    """파일명 유효성 검사 테스트 (VULN-07)."""
+
+    def test_windows_reserved_name_con(self, tmp_path: Path) -> None:
+        """Windows 예약 이름 CON 차단."""
+        with pytest.raises(FileOperationError):
+            make_directory(tmp_path, "CON")
+
+    def test_windows_reserved_name_nul(self, tmp_path: Path) -> None:
+        """Windows 예약 이름 NUL 차단."""
+        with pytest.raises(FileOperationError):
+            make_directory(tmp_path, "NUL")
+
+    def test_invalid_char_colon(self, tmp_path: Path) -> None:
+        """콜론(:) 문자 차단."""
+        with pytest.raises(FileOperationError):
+            make_directory(tmp_path, "folder:name")
+
+    def test_invalid_char_pipe(self, tmp_path: Path) -> None:
+        """|  문자 차단."""
+        with pytest.raises(FileOperationError):
+            make_directory(tmp_path, "folder|name")
+
+    def test_dotdot_name_blocked(self, tmp_path: Path) -> None:
+        """'..' 이름 자체 차단."""
+        with pytest.raises(FileOperationError):
+            make_directory(tmp_path, "..")
+
+
+class TestSecurityConflictLoop:
+    """충돌 해결 무한루프 방지 테스트 (VULN-05)."""
+
+    def test_conflict_limit(self, tmp_path: Path) -> None:
+        """최대 재시도 초과 시 FileOperationError 발생."""
+        from mdir.operations.copy import _MAX_CONFLICT_RETRIES
+        # base 파일과 _copy, _copy2 ... _copyN 전부 생성
+        (tmp_path / "file.txt").write_text("")
+        (tmp_path / "file_copy.txt").write_text("")
+        for i in range(2, _MAX_CONFLICT_RETRIES + 1):
+            (tmp_path / f"file_copy{i}.txt").write_text("")
+        with pytest.raises(FileOperationError, match="충돌 해결 실패"):
+            resolve_conflict(tmp_path / "file.txt")

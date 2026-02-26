@@ -41,8 +41,11 @@ class FileItem:
     @classmethod
     def from_path(cls, path: Path) -> FileItem:
         """Path 객체로부터 FileItem 생성."""
+        is_symlink = path.is_symlink()
         try:
-            stat = path.stat()
+            # 심링크는 lstat()로 심링크 자체의 메타데이터 사용 (VULN-08)
+            # 일반 파일/폴더는 stat() 사용
+            stat = path.lstat() if is_symlink else path.stat()
             size = stat.st_size
             modified = datetime.fromtimestamp(stat.st_mtime)
         except (PermissionError, OSError):
@@ -52,11 +55,11 @@ class FileItem:
         return cls(
             path=path,
             name=path.name,
-            is_dir=path.is_dir(),
+            is_dir=path.is_dir() and not is_symlink,
             is_hidden=path.name.startswith("."),
             size=size,
             modified=modified,
-            is_symlink=path.is_symlink(),
+            is_symlink=is_symlink,
         )
 
     @classmethod
@@ -161,13 +164,18 @@ class PanelState:
             item.is_selected = False
         self.selected_paths.clear()
 
+    # 전체선택 최대 항목 수 (VULN-10: 과도한 선택으로 인한 UI 동결 방지)
+    MAX_SELECT_ALL = 10_000
+
     def select_all(self) -> None:
-        """전체 선택 (.. 항목 제외)."""
+        """전체 선택 (.. 항목 제외, 최대 MAX_SELECT_ALL 개)."""
         self.selected_paths.clear()
+        count = 0
         for item in self.items:
-            if item.name != "..":
+            if item.name != ".." and count < self.MAX_SELECT_ALL:
                 item.is_selected = True
                 self.selected_paths.add(item.path)
+                count += 1
 
     def refresh(self) -> None:
         """현재 디렉토리 재로드."""

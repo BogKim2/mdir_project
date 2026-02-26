@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-02-26
+
+### Security
+- **VULN-01 Critical** — Path traversal in `make_directory` / `rename_item`: added `_validate_filename()` + resolved-path parent check
+- **VULN-02 High** — Symlink following in `shutil.copytree`: added `symlinks=True` to prevent escape outside destination
+- **VULN-04 High** — TOCTOU race condition in rename/mkdir: removed pre-existence checks; rely on OS `FileExistsError`
+- **VULN-05 Medium** — Unbounded conflict-resolution loop in `resolve_conflict`: bounded by `_MAX_CONFLICT_RETRIES = 999`
+- **VULN-07 Medium** — No Windows filename validation: added regex for invalid characters and reserved names (CON, NUL, COM1–9, LPT1–9)
+- **VULN-08 Medium** — `stat()` follows symlinks exposing target metadata: use `lstat()` for symlinks in `FileItem.from_path()`
+- **VULN-10 Low** — `select_all()` could freeze UI on large directories: capped at `MAX_SELECT_ALL = 10_000`
+- Added 11 security regression tests (`TestSecurityPathTraversal`, `TestSecurityFilenameValidation`, `TestSecurityConflictLoop`)
+- Total test count: 46 passed, 1 skipped (up from 35)
+
 ## [0.1.0] - 2026-02-26
 
 ### Added

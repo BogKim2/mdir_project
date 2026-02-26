@@ -1,0 +1,230 @@
+/* mdir-tui Textual CSS */
+
+Screen {
+    layout: vertical;
+    background: #1a1a2e;
+}
+
+/* ── 패널 컨테이너 ──────────────────── */
+#panels-container {
+    layout: horizontal;
+    height: 1fr;
+}
+
+/* ── 파일 패널 ──────────────────────── */
+FilePanel {
+    width: 1fr;
+    border: solid #2a2a3a;
+    layout: vertical;
+}
+
+/* 활성 패널: 밝은 파란 테두리 */
+FilePanel.active-panel {
+    border: solid #4488ff;
+}
+
+/* 경로 바 - 비활성 */
+.path-bar {
+    height: 1;
+    background: #0d0d1a;
+    color: #555577;
+    padding: 0 1;
+    text-overflow: ellipsis;
+}
+
+/* 경로 바 - 활성 */
+FilePanel.active-panel .path-bar {
+    background: #0f3460;
+    color: #ffffff;
+}
+
+/* ── DataTable (파일 목록) ───────────── */
+DataTable {
+    height: 1fr;
+    background: #1a1a2e;
+    scrollbar-background: #1a1a2e;
+    scrollbar-color: #444455;
+}
+
+DataTable > .datatable--header {
+    background: #16213e;
+    color: #888899;
+    text-style: bold;
+}
+
+DataTable > .datatable--header-hover {
+    background: #1e2a4a;
+}
+
+/* 커서 행 - 비활성 패널 (흐릿하게) */
+DataTable > .datatable--cursor {
+    background: #252535;
+    color: #888899;
+}
+
+/* 커서 행 - 활성 패널 (밝게) */
+FilePanel.active-panel DataTable > .datatable--cursor {
+    background: #1155bb;
+    color: #ffffff;
+}
+
+DataTable > .datatable--even-row {
+    background: #1c1c30;
+}
+
+DataTable > .datatable--odd-row {
+    background: #1a1a2e;
+}
+
+/* ── 상태바 ─────────────────────────── */
+StatusBar {
+    height: 1;
+    background: #0f3460;
+    color: #ccccdd;
+    padding: 0 1;
+    layout: horizontal;
+}
+
+#status-left {
+    width: 1fr;
+    color: #ccccdd;
+}
+
+#status-right {
+    width: auto;
+    color: #aaaacc;
+    text-align: right;
+}
+
+/* ── 함수키 바 ──────────────────────── */
+FunctionBar {
+    height: 1;
+    background: #111122;
+    layout: horizontal;
+}
+
+.fkey-item {
+    width: auto;
+    layout: horizontal;
+}
+
+.fkey-num {
+    background: #888899;
+    color: #000000;
+    width: auto;
+    padding: 0 0;
+}
+
+.fkey-label {
+    background: #111122;
+    color: #cccccc;
+    width: auto;
+    padding: 0 1 0 0;
+}
+
+/* ── 모달 다이얼로그 ─────────────────── */
+ConfirmScreen, InputScreen {
+    align: center middle;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+PreviewScreen {
+    align: center middle;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.dialog-box {
+    width: 60;
+    height: auto;
+    min-height: 8;
+    border: double #4488ff;
+    background: #1a1a2e;
+    padding: 1 2;
+    layout: vertical;
+}
+
+.dialog-title {
+    text-style: bold;
+    color: #4488ff;
+    height: 1;
+    margin-bottom: 1;
+}
+
+.dialog-message {
+    color: #ccccdd;
+    margin-bottom: 1;
+}
+
+.dialog-input {
+    background: #0d0d1a;
+    border: solid #4488ff;
+    color: #ffffff;
+    margin-bottom: 1;
+}
+
+.dialog-buttons {
+    layout: horizontal;
+    height: 3;
+    align: center middle;
+}
+
+.btn-ok {
+    background: #1155bb;
+    color: #ffffff;
+    border: tall #4488ff;
+    margin: 0 1;
+    min-width: 10;
+}
+
+.btn-ok:hover, .btn-ok:focus {
+    background: #4488ff;
+}
+
+.btn-cancel {
+    background: #333344;
+    color: #aaaaaa;
+    border: tall #666677;
+    margin: 0 1;
+    min-width: 10;
+}
+
+.btn-cancel:hover, .btn-cancel:focus {
+    background: #555566;
+    color: #ffffff;
+}
+
+/* ── 미리보기 ────────────────────────── */
+.preview-box {
+    width: 90%;
+    height: 85%;
+    border: double #4488ff;
+    background: #0d0d1a;
+    padding: 0;
+    layout: vertical;
+}
+
+.preview-title {
+    height: 1;
+    background: #0f3460;
+    color: #aaaaff;
+    padding: 0 1;
+}
+
+.preview-content {
+    height: 1fr;
+    background: #0d0d1a;
+    color: #ddddee;
+    padding: 0 1;
+    overflow-y: auto;
+    scrollbar-background: #0d0d1a;
+}
+
+/* ── 에러 메시지 ─────────────────────── */
+.error-message {
+    color: #ff4444;
+    text-style: bold;
+}
+
+.success-message {
+    color: #44ff88;
+}

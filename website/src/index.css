@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #080c0a;
+  color: #c8d8cc;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #080c0a; }
+::-webkit-scrollbar-thumb { background: #1e3525; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #00ff9d; }
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow-text {
+  text-shadow: 0 0 30px rgba(0,255,157,0.6), 0 0 60px rgba(0,255,157,0.3);
+}
+.glow-cyan {
+  text-shadow: 0 0 20px rgba(0,229,255,0.5), 0 0 40px rgba(0,229,255,0.2);
+}
+
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 15%, rgba(0,255,157,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(0,229,255,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,107,53,0.03) 0%, transparent 50%),
+    #080c0a;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(30,53,37,0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,53,37,0.25) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.panel-active {
+  box-shadow: 0 0 0 1px #00ff9d, 0 0 40px rgba(0,255,157,0.15), inset 0 0 30px rgba(0,255,157,0.03);
+}
+.panel-inactive {
+  box-shadow: 0 0 0 1px #1e3525, 0 0 20px rgba(0,0,0,0.4);
+}
+
+.key-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #1a2e1f, #0d1410);
+  border: 1px solid #2a4530;
+  border-radius: 5px;
+  padding: 1px 7px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem;
+  color: #00ff9d;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 10px rgba(0,255,157,0.12);
+  letter-spacing: 0.05em;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cursor-blink::after {
+  content: '█';
+  color: #00ff9d;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-4px); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+@keyframes glowPulse {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes typeIn {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
